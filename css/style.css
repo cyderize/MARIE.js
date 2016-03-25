@@ -15,28 +15,27 @@ html, body {
 }
 
 #program-container {
-    display: inline-block;
+    float: left;
     width: calc(100% - 500px);
+    height: 400px;
 }
 
 #register-container {
-    display: inline-block;
+    float: left;
     width: 75px;
 }
 
 #tab-container {
-    float: right;
-    width: 375px;
+    float: left;
+    width: 400px;
     height: 400px;
-    padding: 0;
-    margin: 0;
 }
 
 /*
     Credit:
     http://codepen.io/wallaceerick/pen/ojtal?editors=1100
 */
-#tabs {
+.tabs {
     display: inline-block;
     list-style: none;
     width: 100%;
@@ -45,19 +44,19 @@ html, body {
     margin: 0;
 }
 
-#tabs li {
+.tabs li {
     float: left;
     margin: 0;
-    display: block;
+    display: inline-block;
 }
 
-#tabs input[type="radio"] {
+.tabs input[type="radio"] {
     display: none;
 }
 
-#tabs label {
+.tabs label {
     display: block;
-    background: #eee;
+    background: #ccc;
     border-top-left-radius: 0.5em;
     border-top-right-radius: 0.5em;
     padding: 0 0.5em;
@@ -68,35 +67,43 @@ html, body {
     transition: all 0.2s ease-in-out;
 }
 
-#tabs label:hover {
-    background: #e5e5e5;
+.tabs label:hover {
+    background: #ddd;
 }
 
-#tabs .tab-content {
+.tabs .tab-content {
     z-index: 2;
     display: block;
     visibility: hidden;
     overflow: hidden;
     width: 80%;
     position: absolute;
-    top: 2.2em;
+    top: 2em;
     left: 0;
+    box-sizing: border-box;
+    border: 0.1em solid #ccc;
 }
 
-#tabs [id^="tab"]:checked + label {
+.tabs [id^="tab"]:checked + label {
     top: 0;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    background: #ccc;
+    background: #eee;
 }
 
-#tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+.tabs [id^="tab"]:checked ~ [id^="tab-content"] {
     visibility: visible;
 }
 
 footer {
     margin-top: 1em;
     padding: 1em 0;
+    text-align: center;
+}
+
+#assembled-code-headers, #assembled-code {
+    width: 400px;
+    table-layout: fixed;
     text-align: center;
 }
 
@@ -142,17 +149,18 @@ footer {
     font-family: Courier New, Courier, monospace;
 }
 
-#action-bar {
-    padding: 0 2em;
+.action-bar {
+    background: #eee;
+    padding: 0.2em 2em;
     line-height: 2em;
 }
 
-#action-bar input {
+.action-bar input {
     height: 1em;
 }
 
 .CodeMirror {
-    border: 0.1em solid #ccc;
+    border-top: 0.1em solid #ccc;
 }
 
 .breakpoints {
@@ -215,8 +223,6 @@ footer {
     width: 100%;
     height: 400px;
     padding: 0 0.5em;
-    box-sizing: border-box;
-    border: 0.1em solid #ccc;
     overflow-y: scroll;
     background-color: #FFF;
 }

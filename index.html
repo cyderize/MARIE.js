@@ -21,19 +21,48 @@
         </header>
         <main>
             <div class="container">
-                <div id="action-bar">
-                    <button id="assemble">Assemble</button>
-                    <button id="step" disabled>Step</button>
-                    <button id="microstep" disabled>Microstep</button>
-                    <button id="run" disabled>Run</button>
-                    <button id="restart" disabled>Restart</button>
-                    <span>Delay: </span>
-                    <input id="range-delay" type="range" min="1" max="3000" value="1" />
-                    <span id="display-delay-ms">1 ms</span>
-                </div>
                 <div id="program-container">
-                    Assembly code:
-                    <textarea id="program"></textarea>
+                    <ul class="tabs">
+                        <li>
+                            <input type="radio" name="tabs-left" id="tab3" checked>
+                            <label for="tab3">Edit code</label>
+                            <div id="tab-content3" class="tab-content">
+                                <div class="action-bar">
+                                    <button id="assemble">Assemble</button>
+                                </div>
+                                <textarea id="program"></textarea>
+                                <div id="status-info">MARIE.js</div>
+                            </div>
+                        </li>
+                        <li>
+                            <input type="radio" name="tabs-left" id="tab4">
+                            <label for="tab4">Assembled code</label>
+                            <div id="tab-content4" class="tab-content">
+                                <div class="action-bar">
+                                    <button id="step" disabled>Step</button>
+                                        <button id="microstep" disabled>Microstep</button>
+                                        <button id="run" disabled>Run</button>
+                                        <button id="restart" disabled>Restart</button>
+                                        <span>Delay: </span>
+                                        <input id="range-delay" type="range" min="1" max="3000" value="1" />
+                                        <span id="display-delay-ms">1 ms</span>
+                                </div>
+                                <table id="assembled-code-headers">
+                                    <tr>
+                                        <th></th>
+                                        <th>label</th>
+                                        <th>opcode</th>
+                                        <th>operand</th>
+                                        <th>hex</th>
+                                    </tr>
+                                </table>
+                                <div id="assembled-code-container">
+                                    <table id="assembled-code"></table>
+                                </div>
+                                <div id="status-info">MARIE.js</div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
                 <div id="register-container">
                     <table id="registers">
@@ -54,19 +83,24 @@
                     </table>
                 </div>
                 <div id="tab-container">
-                    <ul id="tabs">
+                    <ul class="tabs">
                         <li>
-                            <input type="radio" name="tabs" id="tab1" checked>
+                            <input type="radio" name="tabs-right" id="tab1" checked>
                             <label for="tab1">Output log</label>
                             <div id="tab-content1" class="tab-content">
                                 <div id="output-log-outer">
                                     <div id="output-log"></div>
                                 </div>
+                                <select>
+                                    <option>ASCII</option>
+                                    <option>Hex</option>
+                                    <option>Dec</option>
+                                </select>
                             </div>
                         </li>
                         <li>
-                            <input type="radio" name="tabs" id="tab2">
-                            <label for="tab2">Register log</label>
+                            <input type="radio" name="tabs-right" id="tab2">
+                            <label for="tab2">RTL log</label>
                             <div id="tab-content2" class="tab-content">
                                 <div id="register-log-outer">
                                     <div id="register-log"></div>
@@ -75,7 +109,6 @@
                         </li>
                     </ul>
                 </div>
-                <div id="status-info">MARIE.js</div>
                 <div id="memory-display">
                     <table id="memory-headers"></table>
                     <div id="memory-container">

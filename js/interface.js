@@ -11,6 +11,9 @@ var assembleButton = document.getElementById("assemble"),
     memoryContainer = document.getElementById("memory-container"),
     memoryHeaders = document.getElementById("memory-headers"),
     memory = document.getElementById("memory"),
+    assembledCodeContainer = document.getElementById("assembled-code-container"),
+    assembledCodeHeaders = document.getElementById("assembled-code-headers"),
+    assembledCode = document.getElementById("assembled-code"),
     statusInfo = document.getElementById("status-info"),
     registerLabel = document.getElementById("register-label"),
     outputLog = document.getElementById("output-log"),
@@ -100,6 +103,36 @@ function populateMemoryView(sim) {
     }
     
     memoryContainer.style.display = "inline-block";
+}
+
+function populateAssembledCodeView(program) {
+    while (assembledCode.firstChild) {
+        assembledCode.removeChild(assembledCode.firstChild);
+    }
+    
+    // Populate instruction cells
+    var i, addressCounter = 0, addressHeader, key, tr, cell;
+    for (i = 0; i < program.length; i++) {
+        tr = document.createElement("tr");
+        addressHeader = document.createElement("th");
+        addressHeader.appendChild(document.createTextNode(MarieAsm.prototype.addressNumberFormatter(addressCounter)));
+        tr.appendChild(addressHeader);
+        addressCounter ++;
+        
+        for(key in program[i]) {
+            if(key == "line") continue;
+            cell = document.createElement("td");
+            cell.className = "cell";
+            if(key == "contents") {
+                cell.appendChild(document.createTextNode(hex(program[i][key], false) || ""));
+            } else {
+                cell.appendChild(document.createTextNode(program[i][key] || ""));
+            }
+            tr.appendChild(cell);
+        }
+        
+        assembledCode.appendChild(tr);
+    }
 }
 
 function resetRegisters() {
@@ -233,6 +266,8 @@ assembleButton.addEventListener("click", function() {
     })
     
     populateMemoryView(sim);
+    console.log(asm.program);
+    populateAssembledCodeView(asm.program);
     initializeOutputLog();
     initializeRegisterLog();
     resetRegisters();
