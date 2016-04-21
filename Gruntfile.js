@@ -89,6 +89,9 @@ module.exports = function(grunt) {
             },
             files: ['src/js/*.js', 'Gruntfile.js']
         },
+        htmllint: {
+            all: ["build/**/*.html"]
+        },
         clean: ['build', 'working']
     });
 
@@ -97,6 +100,6 @@ module.exports = function(grunt) {
     grunt.registerTask('run', ['open:dev']);
     grunt.registerTask('bar', ['build', 'run']);
     grunt.registerTask('bar-dev', ['build-dev', 'run']);
-    grunt.registerTask('test', ['jshint']);
+    grunt.registerTask('test', ['clean', 'jshint', 'ejs:dev', 'htmllint']);
     grunt.registerTask('default', ['bar']);
 };

@@ -1,6 +1,6 @@
 MARIE.js [![Build Status](https://travis-ci.org/MARIE-js/MARIE.js.svg?branch=master)](https://travis-ci.org/MARIE-js/MARIE.js)
 ==============
-Current version: `0.4.1`
+Current version: `0.4.2`
 
 MARIE.js is an implementation of a simulator for a 'Machine Architecture that is Really Intuitive and Easy'
 from [The Essentials of Computer Organization and Architecture](https://books.google.com.au/books/about/The_Essentials_of_Computer_Organization.html?id=3kQoAwAAQBAJ&redir_esc=y) (Linda Null, Julia Lobur) in JavaScript.
@@ -11,6 +11,14 @@ from [The Essentials of Computer Organization and Architecture](https://books.go
     cd /path/to/repo/MARIE.js
     npm install
     grunt
+
+## Development
+
+    # To test and build MARIE.js (you need JRE 8 for grunt test):
+    cd /path/to/repo/MARIE.js
+    npm install
+    grunt test
+    grunt bar-dev
 
 ## License
 
