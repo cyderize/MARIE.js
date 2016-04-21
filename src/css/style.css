@@ -416,8 +416,12 @@ codeblock {
     white-space: nowrap;
 }
 
-#version {
+.version {
     font-size: 10px;
+}
+
+.center {
+    text-align: center;
 }
 
 #fileInput {
