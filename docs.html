@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MARIE.js | Documentation</title>
+                
+        <script src="js/marie.min.js" type="text/javascript"></script>
+        
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="css/bootstrap-popover-x.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="css/codemirror.css" rel="stylesheet" type="text/css">
+        <link href="css/show-hint.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+        <header>
+    <nav id="custom-bootstrap-menu" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-brand">
+                MARIE.js <span id="version">v0.4.1</span>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="index.html"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Help
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="docs.html"><span class="glyphicon glyphicon-book"></span> MARIE Documentation </a></li>
+                        <li><a href="about.html"><span class="glyphicon glyphicon-info-sign"></span> About </a></li>
+                        <li class="divider"></li>
+                        <li><a href="https://gitreports.com/issue/MARIE-js/MARIE.js/" target="_blank"><span class="glyphicon glyphicon-alert"></span> Report an Issue</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://mariejssite.wordpress.com/" target="_blank">Blog</a></li>
+            </ul>
+            <a id="forkme_banner" href="https://github.com/MARIE-js/MARIE.js" target="_blank">View on GitHub</a>
+        </div>
+    </nav>
+</header>
+
+        <main>
+            <div id="command" class="container">
+                <h2>Instruction Set</h2>
+                <table class="table">
+                    <tr>
+                        <th></th>
+                        <th>Instruction</th>
+                        <th>Hex Opcode</th>
+                        <th>Summary</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">Arithmetic</td>
+                        <td>Add X</td>
+                        <td>3</td>
+                        <td>AC ← AC + X</td>
+                    </tr>
+                    <tr>
+                        <td>Subt X</td>
+                        <td>4</td>
+                        <td>AC ← AC - X</td>
+                    </tr>
+                    <tr>
+                        <td>AddI X</td>
+                        <td>B</td>
+                        <td>Add Indirect: Use the value at X as the actual address of the<br>data operand to add to AC</td>
+                    </tr>
+                    <tr>
+                        <td>Clear</td>
+                        <td>A</td>
+                        <td>AC ← 0</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Data Transfer</td>
+                        <td>Load X</td>
+                        <td>1</td>
+                        <td>Loads Contents of Address X into AC</td>
+                    </tr>
+                    <tr>
+                        <td>Store X</td>
+                        <td>2</td>
+                        <td>Stores Contents of AC into Address X</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">I/O</td>
+                        <td>Input</td>
+                        <td>5</td>
+                        <td>Request user to input a value</td>
+                    </tr>
+                    <tr>
+                        <td>Output</td>
+                        <td>6</td>
+                        <td>Prints value from AC</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Branch</td>
+                        <td>Jump X</td>
+                        <td>9</td>
+                        <td>Jumps to Address X</td>
+                    </tr>
+                    <tr>
+                        <td>Skipcond (C)</td>
+                        <td>8</td>
+                        <td>Skips the next instruction based on C: if (C) = <br><br>- 000: Skips if AC &lt; 0<br>- 400: Skips if AC = 0<br>- 800: Skips if AC &gt; 0</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Subroutine</td>
+                        <td>JnS X</td>
+                        <td>0</td>
+                        <td>Jumps and Store: Stores PC at address X and jumps to X+1</td>
+                    </tr>
+                    <tr>
+                        <td>JumpI X</td>
+                        <td>C</td>
+                        <td>Uses the value at X as the address to jump to</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Indirect Addressing</td>
+                        <td>StoreI</td>
+                        <td></td>
+                        <td>Stores value in AC at the indirect address.<br>e.g. StoreI addresspointer<br>Gets value from addresspointer, stores the AC value into the address</td>
+                    </tr>
+                    <tr>
+                        <td>LoadI</td>
+                        <td></td>
+                        <td>Loads value from indirect address into AC<br>e.g. LoadI addresspointer<br>Gets address value from addresspointer, loads value at the address into AC</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Halt</td>
+                        <td>7</td>
+                        <td>End the program</td>
+                    </tr>
+                </table>
+            </div>
+        </main>
+        <footer>
+            <div class="container" style="padding: 0 0">
+            </div>
+            <p>Created by <a href="https://github.com/cyderize">Jason Nguyen</a>, <a href="https://github.com/jos0003">Saurabh Joshi</a> and <a href="https://github.com/lorderikir">Eric Jiang</a>.</p>
+        </footer>
+    </body>
+</html>
+
