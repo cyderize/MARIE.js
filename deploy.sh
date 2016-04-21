@@ -2,6 +2,8 @@
 
 set -e
 
+echo Deploying on ${TRAVIS_REPO_SLUG}.
+
 cd build
 
 git init
